@@ -30,20 +30,6 @@
 		"LS_ADLSConnection_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://datalakegen27demo.dfs.core.windows.net/"
-		},
-		"AzureSqlDatabase_PE_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/0b09d9a2-10b0-4bdb-966c-fa3ebfa3ba0a/resourceGroups/TestResourceGroup002/providers/Microsoft.Sql/servers/testsqlserverdemo009"
-		},
-		"AzureSqlDatabase_PE_properties_groupId": {
-			"type": "string",
-			"defaultValue": "sqlServer"
-		},
-		"AzureSqlDatabase_PE_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"testsqlserverdemo009.database.windows.net"
-			]
 		}
 	},
 	"variables": {
@@ -70,7 +56,8 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2022-11-29T03:15:34Z"
 			},
 			"dependsOn": []
 		},
@@ -165,6 +152,30 @@
 			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks",
 			"apiVersion": "2018-06-01",
 			"properties": {},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline2')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
 			"dependsOn": []
 		},
 		{
@@ -509,19 +520,6 @@
 					"type": "ManagedVirtualNetworkReference",
 					"referenceName": "default"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/default/AzureSqlDatabase_PE')]",
-			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"privateLinkResourceId": "[parameters('AzureSqlDatabase_PE_properties_privateLinkResourceId')]",
-				"groupId": "[parameters('AzureSqlDatabase_PE_properties_groupId')]",
-				"fqdns": "[parameters('AzureSqlDatabase_PE_properties_fqdns')]"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"

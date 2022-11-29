@@ -93,15 +93,6 @@
 					},
 					"LS_ADLSConnection_properties_typeProperties_url": {
 						"value": "[parameters('LS_ADLSConnection_properties_typeProperties_url')]"
-					},
-					"AzureSqlDatabase_PE_properties_privateLinkResourceId": {
-						"value": "[parameters('AzureSqlDatabase_PE_properties_privateLinkResourceId')]"
-					},
-					"AzureSqlDatabase_PE_properties_groupId": {
-						"value": "[parameters('AzureSqlDatabase_PE_properties_groupId')]"
-					},
-					"AzureSqlDatabase_PE_properties_fqdns": {
-						"value": "[parameters('AzureSqlDatabase_PE_properties_fqdns')]"
 					}
 				}
 			},
@@ -120,6 +111,15 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"AzureSqlDatabase_PE_properties_privateLinkResourceId": {
+						"value": "[parameters('AzureSqlDatabase_PE_properties_privateLinkResourceId')]"
+					},
+					"AzureSqlDatabase_PE_properties_groupId": {
+						"value": "[parameters('AzureSqlDatabase_PE_properties_groupId')]"
+					},
+					"AzureSqlDatabase_PE_properties_fqdns": {
+						"value": "[parameters('AzureSqlDatabase_PE_properties_fqdns')]"
 					},
 					"TR_EventTrigger_properties_typeProperties_scope": {
 						"value": "[parameters('TR_EventTrigger_properties_typeProperties_scope')]"
