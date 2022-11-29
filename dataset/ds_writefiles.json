@@ -1,0 +1,33 @@
+{
+	"name": "ds_writefiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLSConnection",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sinkfiles": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().sinkfiles",
+					"type": "Expression"
+				},
+				"folderPath": "CSVFiles",
+				"fileSystem": "refined"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
